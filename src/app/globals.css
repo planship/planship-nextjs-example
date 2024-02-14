@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+/* NavBar classes */
+.nav-caption {
+  @apply text-gray-400 rounded-md px-2 text-sm font-light;
+}
+
+.nav-link {
+  @apply border border-gray-500 md:border-none text-gray-300 hover:bg-gray-600 hover:text-white rounded-md mx-1 px-2 py-1 text-sm font-medium;
+}
+
+.user-btn {
+  @apply flex max-w-xs items-center rounded-full bg-gray-800 text-sm hover:outline-none hover:ring-1 hover:ring-gray-400 hover:ring-offset-2 hover:ring-offset-gray-800;
+}
+
+.project-name {
+  @apply text-sm font-semibold leading-6 text-gray-900;
+}
+
+/* ProjectsView classes */
+.project-type {
+  @apply mt-1 truncate text-xs leading-5 text-gray-500;
+}
+
+.create-project-btn {
+  @apply w-full rounded-md px-3 py-3 text-base text-white font-medium bg-green-500 hover:bg-opacity-90;
+}
+
+.create-project-btn:disabled {
+  @apply bg-gray-400;
+}
+
+.clicker-btn {
+  @apply block w-full rounded-md px-4 py-2 text-sm font-medium text-white bg-blue-600 bg-opacity-60 hover:bg-opacity-90;
+}
+
+.clicker-btn:disabled {
+  @apply bg-gray-400;
+}
+
+.create-project-dlg-btn {
+  @apply rounded-md border border-transparent px-4 py-2 text-sm font-medium text-white hover:bg-opacity-90;
+}
