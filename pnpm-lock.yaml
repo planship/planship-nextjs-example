@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1(react@18.2.0)
   '@planship/react':
-    specifier: 0.1.2
-    version: 0.1.2
+    specifier: ^0.1.3
+    version: 0.1.3
   next:
     specifier: 14.0.3
     version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -316,8 +316,8 @@ packages:
     dev: true
     optional: true
 
-  /@planship/fetch@0.1.0:
-    resolution: {integrity: sha512-CQrobBs/oL1wgSwnBNm4x4fRiDsDcSeRWS2NJ7uG6QGuuMN+WAqN9vuvtLgMKLTepjS2qfbbIDQlLtzveiXujA==}
+  /@planship/fetch@0.1.1:
+    resolution: {integrity: sha512-QNbFAx6pTKckx61cUtM68+eU+z6m4TkLBYjhbnFl3kdO7x+amAapIddcgO4rQ3lkWQ9b36n58ASRoP2cHiat4A==}
     dependencies:
       '@planship/models': 0.1.0
     dev: false
@@ -326,10 +326,10 @@ packages:
     resolution: {integrity: sha512-/8Tlu3SmUemVNAeNJlUsf7vUwKRNxzCytDW61NEC9HWcYqonqF7WfVVuOvc/SC7/ovmf6alVxhZhJTcIqFVKWQ==}
     dev: false
 
-  /@planship/react@0.1.2:
-    resolution: {integrity: sha512-j1Mnco5Ounv+JZnaKCyJt2sjreZ/00sKAueXOZPxM0Hxw+IsabzuxoAhxBVEWms+tFfQ8yI5iSdq2HsSCdmufw==}
+  /@planship/react@0.1.3:
+    resolution: {integrity: sha512-YFi3EJTfHl9dZdzdM3hKFPD6sbtRJ2eSRniuxICJAJevu+qXnIH60t2tggdn/dGhZU4fttt7+iUIhdSuOJmK9A==}
     dependencies:
-      '@planship/fetch': 0.1.0
+      '@planship/fetch': 0.1.1
     dev: false
 
   /@rushstack/eslint-patch@1.6.1:

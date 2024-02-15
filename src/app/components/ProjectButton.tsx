@@ -1,12 +1,21 @@
 import { useState } from 'react'
 import { usePlanshipCustomer } from '@planship/react'
+import { useCurrentUser } from './CurrentUserProvider'
 
-function RenderProjectButton(projectType: string) {
-  const { planshipCustomerApiClient, entitlements } = usePlanshipCustomer()
+function RenderProjectButton(projectType: string, projectName: string) {
+  const { entitlements, setEntitlements } = usePlanshipCustomer()
+  const currentUser = useCurrentUser()
   let [batchClicks, setBatchClicks] = useState(() => 5)
 
   const generateClicks = (count: number) => {
-    planshipCustomerApiClient?.reportUsage('button-click', count)
+    fetch('/api/click', {
+      method: 'post',
+      body: JSON.stringify({
+        customerId: currentUser.email,
+        count,
+        projectName
+      })
+    })
   }
 
   const renderNoMoreClicks = (canGenerateButtonClick: boolean) => {
@@ -67,5 +76,5 @@ function RenderProjectButton(projectType: string) {
 }
 
 export default function ProjectButton({ project, className }: { project: Object; className: string }) {
-  return <div className={className}>{RenderProjectButton(project.type)}</div>
+  return <div className={className}>{RenderProjectButton(project.type, project.name)}</div>
 }
