@@ -10,10 +10,15 @@ function planshipFetch(url, options) {
 
 const planshipClient: Planship = new Planship(
   'clicker-demo',
-  process.env.PLANSHIP_API_SERVER_URL || 'https://api.planship.io',
-  process.env.PLANSHIP_API_CLIENT_ID || '',
-  process.env.PLANSHIP_API_CLIENT_SECRET || '',
-  planshipFetch
+  {
+    clientId: process.env.PLANSHIP_API_CLIENT_ID,
+    clientSecret: process.env.PLANSHIP_API_CLIENT_SECRET
+  },
+  {
+    extras: {
+      fetchApi: planshipFetch
+    }
+  }
 )
 
 export async function getAccessToken() {

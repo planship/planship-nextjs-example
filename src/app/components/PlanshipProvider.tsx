@@ -2,7 +2,7 @@
 
 import { withPlanshipCustomerProvider } from '@planship/react'
 import { getAccessToken } from '@/lib/planship'
-import { CustomerSubscriptionWithPlan, JSONValue } from '@planship/fetch'
+import { CustomerSubscriptionWithPlan, Entitlements } from '@planship/fetch'
 import { useCurrentUser } from './CurrentUserProvider'
 
 export default function PlanshipProvider({
@@ -11,13 +11,13 @@ export default function PlanshipProvider({
   initialSubscrptions
 }: {
   children: React.ReactNode
-  initialEntitlements: JSONValue
+  initialEntitlements: Entitlements
   initialSubscrptions: CustomerSubscriptionWithPlan[]
 }) {
   const currentUser = useCurrentUser()
   const PlanshipCustomerProvider = withPlanshipCustomerProvider(
     {
-      url: process.env.NEXT_PUBLIC_PLANSHIP_API_CLIENT_URL,
+      baseUrl: process.env.NEXT_PUBLIC_PLANSHIP_API_CLIENT_URL,
       websocketUrl: process.env.NEXT_PUBLIC_WEBSOCKET_URL,
       slug: 'clicker-demo',
       customerId: currentUser.email,
