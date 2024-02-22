@@ -18,10 +18,10 @@ export default function PlanshipProvider({
   const PlanshipCustomerProvider = withPlanshipCustomerProvider(
     {
       baseUrl: process.env.NEXT_PUBLIC_PLANSHIP_API_CLIENT_URL,
-      websocketUrl: process.env.NEXT_PUBLIC_WEBSOCKET_URL,
+      webSocketUrl: process.env.NEXT_PUBLIC_PLANSHIP_WEBSOCKET_URL,
       slug: 'clicker-demo',
       customerId: currentUser.email,
-      getAccessToken: getAccessToken
+      getAccessToken
     },
     initialEntitlements,
     initialSubscrptions

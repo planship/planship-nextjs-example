@@ -15,6 +15,7 @@ const planshipClient: Planship = new Planship(
     clientSecret: process.env.PLANSHIP_API_CLIENT_SECRET
   },
   {
+    baseUrl: process.env.PLANSHIP_API_SERVER_URL,
     extras: {
       fetchApi: planshipFetch
     }
