@@ -12,8 +12,8 @@ dependencies:
     specifier: ^2.1.1
     version: 2.1.1(react@18.2.0)
   '@planship/react':
-    specifier: 0.2.3-alpha
-    version: 0.2.3-alpha
+    specifier: 0.2.3
+    version: 0.2.3
   next:
     specifier: 14.0.3
     version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
@@ -327,8 +327,8 @@ packages:
     resolution: {integrity: sha512-hYnp0WXUsgbOE/IRlN9Jxjyp47+a425lOjtwO3DYGysk+jHTcnY9GgRsevnctXjE5kOvXJKXHnkvlJfFZbLH3w==}
     dev: false
 
-  /@planship/react@0.2.3-alpha:
-    resolution: {integrity: sha512-YBvy/xt3tJOhpHuvY+55zWsnO4oEwDUvLOmd2yRWCqbgdvNMu69cbiaT4cXhQis/3evJtQwzjFU4EVs4mtbXgA==}
+  /@planship/react@0.2.3:
+    resolution: {integrity: sha512-KPccMhjqsvjv1n1Q7RBPdM7nTS3wc5SEkpsR5XXDjXue9EsHHypkXYdBDuwnZhvpWUYHWbwcT0SoZqlkczWDEg==}
     dependencies:
       '@planship/fetch': 0.2.3
     dev: false
