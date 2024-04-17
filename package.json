@@ -13,7 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
-    "@planship/react": "^0.2.1",
+    "@planship/react": "0.2.3-alpha",
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
