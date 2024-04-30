@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import PlanshipProvider from './components/PlanshipProvider'
-import { getPlanshipOnServer } from './lib/planship'
-import { Planship } from '@planship/fetch'
+import { fetchSubscriptions, fetchEntitlements } from './lib/planship'
 import './globals.css'
 import { CurrentUserProvider } from './components/CurrentUserProvider'
 import NavBar from './components/NavBar'
@@ -15,14 +14,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const currentUser = getCurrentUser()
-  const apiClient: Planship = getPlanshipOnServer()
-  const entitlements = await apiClient.getEntitlements(currentUser.email)
-  const subscriptions = await apiClient.listSubscriptions(currentUser.email)
+  const subscriptions = await fetchSubscriptions(currentUser.email)
+  const entitlements = await fetchEntitlements(currentUser.email)
   return (
     <html lang="en">
       <body className="flex flex-col overflow-hidden h-[calc(100dvh)]">
         <CurrentUserProvider>
-          <PlanshipProvider initialEntitlements={entitlements} initialSubscrptions={subscriptions}>
+          <PlanshipProvider initialEntitlements={entitlements} initialSubscriptions={subscriptions}>
             <PlanshipSubscriptionProvider>
               <NavBar />
               <div className="flex-grow overflow-y-scroll">{children}</div>

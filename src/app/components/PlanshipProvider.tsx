@@ -8,11 +8,11 @@ import { useCurrentUser } from './CurrentUserProvider'
 export default function PlanshipProvider({
   children,
   initialEntitlements,
-  initialSubscrptions
+  initialSubscriptions
 }: {
   children: React.ReactNode
   initialEntitlements: Entitlements
-  initialSubscrptions: CustomerSubscriptionWithPlan[]
+  initialSubscriptions: CustomerSubscriptionWithPlan[]
 }) {
   const currentUser = useCurrentUser()
   const PlanshipCustomerProvider = withPlanshipCustomerProvider(
@@ -22,7 +22,7 @@ export default function PlanshipProvider({
       getAccessToken
     },
     initialEntitlements,
-    initialSubscrptions
+    initialSubscriptions
   )
 
   return <PlanshipCustomerProvider>{children}</PlanshipCustomerProvider>
