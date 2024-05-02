@@ -1,4 +1,6 @@
-import { Planship, CustomerSubscriptionWithPlan, ResponseError, Entitlements } from '@planship/fetch'
+import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/fetch'
+
+import { Planship } from '@planship/fetch'
 
 // Wrap nextjs fetch so there is no caching
 function planshipFetch(url, options) {
@@ -33,8 +35,8 @@ export async function fetchSubscriptions(userId: string): Promise<CustomerSubscr
   let customer
   try {
     customer = await planshipClient.getCustomer(userId)
-  } catch (error: ResponseError) {
-    if (error.response?.status === 404) {
+  } catch (error) {
+    if (error?.response?.status === 404) {
       // Create a Planship customer for the default user if one doesn't exist. This would typically be called during
       // a new customer sign-up, but this example app doesn't implement the sign-up/sign-in flow.
       customer = await planshipClient.createCustomer({ alternativeId: userId })
@@ -47,7 +49,9 @@ export async function fetchSubscriptions(userId: string): Promise<CustomerSubscr
     if (subscriptions.length > 0) {
       return subscriptions
     } else {
-      // Create an initial Planship subscriptio to the Personal plan for the default user if one doesn't exist.
+      // Create an initial Planship subscription to the Personal plan for the default user if one doesn't exist.
+      // This would typically be called when a customer chooses their initial plan upon sign-up, but this example app
+      // doesn't implement the sign-up/sign-in flow.
       return [await planshipClient.createSubscription(customer.id, 'personal')]
     }
   }

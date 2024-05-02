@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from 'react'
 import { usePlanshipCustomer } from '@planship/react'
-import { CustomerSubscriptionWithPlan } from '@planship/fetch'
+import type { CustomerSubscriptionWithPlan } from '@planship/fetch'
 
 type changePlanFn = (newPlanSlug: string) => Promise<void>
 interface IPlanshipSubscriptionContext {

@@ -1,4 +1,4 @@
-import { Planship, TokenResponse } from '@planship/fetch'
+import type { Planship, TokenResponse } from '@planship/fetch'
 import { getPlanshipOnServer } from '@/lib/planship'
 
 // Server API route that returns a Planship token fetched via a Planship API

@@ -2,10 +2,15 @@ import { useState } from 'react'
 import { usePlanshipCustomer } from '@planship/react'
 import { useCurrentUser } from './CurrentUserProvider'
 
+interface IProject {
+  name: string
+  type: string
+}
+
 function RenderProjectButton(projectType: string, projectName: string) {
-  const { entitlements, setEntitlements } = usePlanshipCustomer()
+  const { entitlements } = usePlanshipCustomer()
   const currentUser = useCurrentUser()
-  let [batchClicks, setBatchClicks] = useState(() => 5)
+  const [batchClicks, setBatchClicks] = useState(() => 5)
 
   const generateClicks = (count: number) => {
     fetch('/api/click', {
@@ -75,6 +80,6 @@ function RenderProjectButton(projectType: string, projectName: string) {
   }
 }
 
-export default function ProjectButton({ project, className }: { project: Object; className: string }) {
+export default function ProjectButton({ project, className }: { project: IProject; className: string }) {
   return <div className={className}>{RenderProjectButton(project.type, project.name)}</div>
 }

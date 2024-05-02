@@ -8,10 +8,10 @@ import { usePlanshipCustomer } from '@planship/react'
 
 export default function ProjectsView() {
   const { entitlements } = usePlanshipCustomer()
-  let [newProjectName, setNewProjectName] = useState('New project')
-  let [newProjectType, setNewProjectType] = useState('Single')
-  let [isOpen, setIsOpen] = useState(false)
-  let [projectsLoaded, setProjectsLoaded] = useState(true)
+  const [newProjectName, setNewProjectName] = useState('New project')
+  const [newProjectType, setNewProjectType] = useState('Single')
+  const [isOpen, setIsOpen] = useState(false)
+  const [projectsLoaded, setProjectsLoaded] = useState(true)
 
   const [projects, setProjects] = useState([
     { name: 'First project', type: 'Single' },
