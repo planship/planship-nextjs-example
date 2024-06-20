@@ -4,10 +4,10 @@ import ProjectButton from './ProjectButton'
 import { useState, useEffect } from 'react'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { Dialog } from '@headlessui/react'
-import { usePlanshipCustomer } from '@planship/react'
+import { useCurrentPlanshipCustomer } from './PlanshipCustomerProvider'
 
 export default function ProjectsView() {
-  const { entitlements } = usePlanshipCustomer()
+  const { entitlements } = useCurrentPlanshipCustomer()
   const [newProjectName, setNewProjectName] = useState('New project')
   const [newProjectType, setNewProjectType] = useState('Single')
   const [isOpen, setIsOpen] = useState(false)
@@ -21,7 +21,7 @@ export default function ProjectsView() {
     }
   ])
 
-  const canCreateProject = () => entitlements?.['max-projects'] > projects.length
+  const canCreateProject = () => entitlements?.maxProjects > projects.length
 
   useEffect(() => {
     if (!projectsLoaded) {
@@ -121,9 +121,9 @@ export default function ProjectsView() {
                       onChange={(e) => setNewProjectType(e.target.value)}
                       className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                     >
-                      <option disabled={!entitlements['project-types']?.includes('Single')}>Single</option>
-                      <option disabled={!entitlements['project-types']?.includes('Random')}>Random</option>
-                      <option disabled={!entitlements['project-types']?.includes('Batch')}>Batch</option>
+                      <option disabled={!entitlements.projectTypes?.includes('Single')}>Single</option>
+                      <option disabled={!entitlements.projectTypes?.includes('Random')}>Random</option>
+                      <option disabled={!entitlements.projectTypes?.includes('Batch')}>Batch</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
