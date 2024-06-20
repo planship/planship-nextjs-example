@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import PlanshipProvider from './components/PlanshipProvider'
+import { CurrentPlanshipCustomerProvider } from './components/PlanshipCustomerProvider'
 import { fetchSubscriptions, fetchEntitlements } from './lib/planship'
 import './globals.css'
 import { CurrentUserProvider } from './components/CurrentUserProvider'
@@ -20,13 +20,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className="flex flex-col overflow-hidden h-[calc(100dvh)]">
         <CurrentUserProvider>
-          <PlanshipProvider initialEntitlements={entitlements} initialSubscriptions={subscriptions}>
+          <CurrentPlanshipCustomerProvider initialEntitlements={entitlements} initialSubscriptions={subscriptions}>
             <PlanshipSubscriptionProvider>
               <NavBar />
               <div className="flex-grow overflow-y-scroll">{children}</div>
               <div className="bg-gray-800 text-white text-center py-2">PlanshipClicker</div>
             </PlanshipSubscriptionProvider>
-          </PlanshipProvider>
+          </CurrentPlanshipCustomerProvider>
         </CurrentUserProvider>
       </body>
     </html>

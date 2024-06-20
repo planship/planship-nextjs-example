@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { usePlanshipCustomer } from '@planship/react'
 import { useCurrentUser } from './CurrentUserProvider'
+import { useCurrentPlanshipCustomer } from './PlanshipCustomerProvider'
 
 interface IProject {
   name: string
@@ -8,7 +8,7 @@ interface IProject {
 }
 
 function RenderProjectButton(projectType: string, projectName: string) {
-  const { entitlements } = usePlanshipCustomer()
+  const { entitlements } = useCurrentPlanshipCustomer()
   const currentUser = useCurrentUser()
   const [batchClicks, setBatchClicks] = useState(() => 5)
 
@@ -29,7 +29,7 @@ function RenderProjectButton(projectType: string, projectName: string) {
   }
 
   const canGenerateButtonClick = () =>
-    entitlements['subscription-button-clicks'] > 0 && entitlements['button-clicks-per-minute'] > 0
+    entitlements.subscriptionButtonClicks > 0 && entitlements.buttonClicksPerMinute > 0
 
   switch (projectType) {
     case 'Single':
