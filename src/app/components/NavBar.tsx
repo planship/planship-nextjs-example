@@ -6,8 +6,8 @@ import { usePathname } from 'next/navigation'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
 
-import { usePlanshipCustomer } from '@planship/react'
 import { useCurrentUser } from './CurrentUserProvider'
+import { useCurrentPlanshipCustomer } from './PlanshipCustomerProvider'
 import { usePlanshipSubscription } from './PlanshipSubscriptionProvider'
 
 function classNames(...classes: string[]) {
@@ -18,7 +18,7 @@ export default function NavBar() {
   const pathname = usePathname()
   const currentUser = useCurrentUser()
 
-  const { entitlements } = usePlanshipCustomer()
+  const { entitlements } = useCurrentPlanshipCustomer()
   const { planSubscription } = usePlanshipSubscription()
 
   return (
@@ -30,15 +30,13 @@ export default function NavBar() {
               <Link href="/" className={classNames(pathname === '/' ? 'bg-gray-700' : '', 'block nav-link')}>
                 Projects
               </Link>
-              {entitlements['analytics-panel'] ? (
+              {entitlements.analyticsPanel && (
                 <Link
                   href="/analytics"
                   className={classNames(pathname === '/analytics' ? 'bg-gray-700' : '', 'block nav-link')}
                 >
                   Analytics
                 </Link>
-              ) : (
-                ''
               )}
               <Link
                 href="/subscription"
@@ -49,8 +47,8 @@ export default function NavBar() {
             </div>
             <div className="grow" />
             <div className="flex flex-col md:flex-row mt-3 md:mt-0 md:items-center">
-              <div className="nav-caption">Subscription clicks left: {entitlements['subscription-button-clicks']}</div>
-              <div className="nav-caption">Clicks left this minute: {entitlements['button-clicks-per-minute']}</div>
+              <div className="nav-caption">Subscription clicks left: {entitlements.subscriptionButtonClicks}</div>
+              <div className="nav-caption">Clicks left this minute: {entitlements.buttonClicksPerMinute}</div>
             </div>
           </div>
           <div className="shrink-0">
