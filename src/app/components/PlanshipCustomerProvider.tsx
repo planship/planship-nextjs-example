@@ -1,15 +1,12 @@
 'use client'
 
-
 import { usePlanshipCustomer, EntitlementsBase, withPlanshipCustomerProvider } from '@planship/react'
 import { getAccessToken } from '@/lib/planship'
 import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/fetch'
 import { useCurrentUser } from './CurrentUserProvider'
-import type  { ReactNode } from 'react'
-
+import type { ReactNode } from 'react'
 
 export class ClickerEntitlements extends EntitlementsBase {
-
   get subscriptionButtonClicks(): number {
     return this.entitlementsDict?.['subscription-button-clicks'].valueOf()
   }
