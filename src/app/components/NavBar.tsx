@@ -47,8 +47,7 @@ export default function NavBar() {
             </div>
             <div className="grow" />
             <div className="flex flex-col md:flex-row mt-3 md:mt-0 md:items-center">
-              <div className="nav-caption">Subscription clicks left: {entitlements.subscriptionButtonClicks}</div>
-              <div className="nav-caption">Clicks left this minute: {entitlements.buttonClicksPerMinute}</div>
+              <div className="nav-caption">Button clicks left: {entitlements.subscriptionButtonClicks}</div>
             </div>
           </div>
           <div className="shrink-0">

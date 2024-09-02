@@ -29,7 +29,7 @@ function RenderProjectButton(projectType: string, projectName: string) {
   }
 
   const canGenerateButtonClick = () =>
-    entitlements.subscriptionButtonClicks > 0 && entitlements.buttonClicksPerMinute > 0
+    entitlements.subscriptionButtonClicks > 0
 
   switch (projectType) {
     case 'Single':

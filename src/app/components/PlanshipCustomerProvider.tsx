@@ -11,16 +11,8 @@ export class ClickerEntitlements extends EntitlementsBase {
     return this.entitlementsDict?.['subscription-button-clicks'].valueOf()
   }
 
-  get buttonClicksPerMinute(): number {
-    return this.entitlementsDict?.['button-clicks-per-minute']
-  }
-
   get maxProjects(): number {
     return this.entitlementsDict?.['max-projects']
-  }
-
-  get premiumButton(): boolean {
-    return this.entitlementsDict?.['premium-button']
   }
 
   get analyticsPanel(): boolean {
