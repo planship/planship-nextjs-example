@@ -1,7 +1,7 @@
 import AnalyticsView from '@/components/AnalyticsView'
 import { getCurrentUser } from '@/lib/currentUser'
 import { getPlanshipOnServer } from '@/lib/planship'
-import type { Planship } from '@planship/fetch'
+import type { Planship } from '@planship/react'
 
 export default async function Analytics() {
   const planshipClient: Planship = getPlanshipOnServer()

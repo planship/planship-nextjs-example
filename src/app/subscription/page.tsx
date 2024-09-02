@@ -1,6 +1,6 @@
 import PlanSubscriptionView from '@/components/PlanSubscriptionView'
 import { getPlanshipOnServer } from '@/lib/planship'
-import type { Planship, Plan, PlanDetails } from '@planship/fetch'
+import type { Planship, Plan, PlanDetails } from '@planship/react'
 
 export default async function Plans() {
   const planshipClient: Planship = getPlanshipOnServer()

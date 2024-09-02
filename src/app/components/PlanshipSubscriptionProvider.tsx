@@ -1,7 +1,7 @@
 'use client'
 
-import { createContext, useContext, useState } from 'react'
-import type { CustomerSubscriptionWithPlan } from '@planship/fetch'
+import { createContext, useContext, useEffect, useState } from 'react'
+import type { CustomerSubscriptionWithPlan } from '@planship/react'
 import { usePlanshipCustomer } from '@planship/react'
 
 type changePlanFn = (newPlanSlug: string) => Promise<void>
@@ -12,14 +12,14 @@ interface IPlanshipSubscriptionContext {
 
 const PlanshipSubscriptionContext = createContext<IPlanshipSubscriptionContext>({})
 
-export const PlanshipSubscriptionProvider = ({ children }: { children: React.ReactNode }) => {
-  const { planshipCustomerApiClient, subscriptions } = usePlanshipCustomer()
+export const PlanshipSubscriptionProvider = ({ children, initialSubscriptions }: { children: React.ReactNode, initialSubscriptions: [] }) => {
+  const { planshipCustomerApiClient } = usePlanshipCustomer()
 
-  const [planSubscription, setDefaultSubscription] = useState(() => subscriptions?.[0])
+  const  [subscriptions, setSubscriptions] = useState(() => initialSubscriptions)
+  const [planSubscription, setDefaultSubscription] = useState(() => initialSubscriptions?.[0])
 
   const changePlan = async (newPlanSlug: string) => {
-    return planshipCustomerApiClient
-      .modifySubscription(subscriptions?.[0].subscriptionId, {
+    return planshipCustomerApiClient?.modifySubscription(subscriptions?.[0].subscriptionId, {
         planSlug: newPlanSlug,
         renewPlanSlug: newPlanSlug
       })
@@ -27,6 +27,19 @@ export const PlanshipSubscriptionProvider = ({ children }: { children: React.Rea
         setDefaultSubscription(subscription)
       })
   }
+
+  useEffect(() => {
+    async function fetchSubscriptions() {
+      planshipCustomerApiClient?.listSubscriptions().then((s) => setSubscriptions(s))
+    }
+
+    fetchSubscriptions()
+  }, [planshipCustomerApiClient])
+
+  useEffect(() => {
+    setDefaultSubscription(subscriptions?.[0])
+  }, [subscriptions])
+
   return (
     <PlanshipSubscriptionContext.Provider value={{ planSubscription, changePlan }}>
       {children}

@@ -2,7 +2,7 @@
 
 import { usePlanshipCustomer, EntitlementsBase, withPlanshipCustomerProvider } from '@planship/react'
 import { getAccessToken } from '@/lib/planship'
-import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/fetch'
+import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/react'
 import { useCurrentUser } from './CurrentUserProvider'
 import type { ReactNode } from 'react'
 
@@ -34,8 +34,7 @@ export class ClickerEntitlements extends EntitlementsBase {
 
 export const CurrentPlanshipCustomerProvider = ({
   children,
-  initialEntitlements,
-  initialSubscriptions
+  initialEntitlements
 }: {
   children: ReactNode
   initialEntitlements: Entitlements
@@ -49,7 +48,6 @@ export const CurrentPlanshipCustomerProvider = ({
       getAccessToken
     },
     initialEntitlements,
-    initialSubscriptions
   )
 
   return <PlanshipCustomerProvider>{children}</PlanshipCustomerProvider>

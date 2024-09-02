@@ -1,4 +1,4 @@
-import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/fetch'
+import type { CustomerSubscriptionWithPlan, Entitlements } from '@planship/react'
 
 import { Planship } from '@planship/fetch'
 

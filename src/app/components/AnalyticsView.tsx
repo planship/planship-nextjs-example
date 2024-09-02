@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useCurrentPlanshipCustomer } from './PlanshipCustomerProvider'
+import type { LeverUsage } from '@planship/react'
 
 export default function AnalyticsView({ initialUsage }: { initialUsage: { [key: string]: LeverUsage } }) {
   const [usage, setUsage] = useState(() => initialUsage)

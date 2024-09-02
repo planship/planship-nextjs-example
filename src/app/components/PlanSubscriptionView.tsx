@@ -1,7 +1,7 @@
 'use client'
 
 import { RadioGroup } from '@headlessui/react'
-import type { PlanDetails } from '@planship/fetch'
+import type { PlanDetails } from '@planship/react'
 import { useState, Fragment } from 'react'
 import { usePlanshipSubscription } from './PlanshipSubscriptionProvider'
 

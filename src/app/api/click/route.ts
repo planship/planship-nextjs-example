@@ -1,4 +1,4 @@
-import type { Planship } from '@planship/fetch'
+import type { Planship } from '@planship/react'
 import { getPlanshipOnServer } from '@/lib/planship'
 
 // Server API route that records and reports a button click

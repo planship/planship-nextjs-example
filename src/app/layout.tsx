@@ -20,8 +20,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className="flex flex-col overflow-hidden h-[calc(100dvh)]">
         <CurrentUserProvider>
-          <CurrentPlanshipCustomerProvider initialEntitlements={entitlements} initialSubscriptions={subscriptions}>
-            <PlanshipSubscriptionProvider>
+          <CurrentPlanshipCustomerProvider initialEntitlements={entitlements}>
+            <PlanshipSubscriptionProvider initialSubscriptions={subscriptions}>
               <NavBar />
               <div className="flex-grow overflow-y-scroll">{children}</div>
               <div className="bg-gray-800 text-white text-center py-2">PlanshipClicker</div>
