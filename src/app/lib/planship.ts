@@ -14,11 +14,13 @@ const planshipClient: Planship = new Planship(
   'clicker-demo',
   {
     clientId: process.env.PLANSHIP_API_CLIENT_ID,
-    clientSecret: process.env.PLANSHIP_API_CLIENT_SECRET
+    clientSecret: process.env.PLANSHIP_API_CLIENT_SECRET,
   },
   {
+    baseUrl: process.env.PLANSHIP_API_SERVER_URL,
     extras: {
-      fetchApi: planshipFetch
+      fetchApi: planshipFetch,
+
     }
   }
 )

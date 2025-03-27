@@ -36,6 +36,8 @@ export const CurrentPlanshipCustomerProvider = ({
   const PlanshipCustomerProvider = withPlanshipCustomerProvider(
     {
       slug: 'clicker-demo',
+      baseUrl: process.env.NEXT_PUBLIC_PLANSHIP_API_CLIENT_URL,
+      webSocketUrl: process.env.NEXT_PUBLIC_PLANSHIP_WEBSOCKET_URL,
       customerId: currentUser.email,
       getAccessToken
     },
