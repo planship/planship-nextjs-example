@@ -1,6 +1,6 @@
 'use client'
 
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
@@ -18,8 +18,16 @@ export default function NavBar() {
   const pathname = usePathname()
   const currentUser = useCurrentUser()
 
+  const [subscriptionRenewAt, setSubscriptionRenewAt] = useState<string>(() => 'Unknown')
+
   const { entitlements } = useCurrentPlanshipCustomer()
   const { planSubscription } = usePlanshipSubscription()
+
+  useEffect(() => {
+    setSubscriptionRenewAt(
+      planSubscription?.renewAt.toLocaleDateString(undefined, { hour: 'numeric', minute: 'numeric' }) ?? 'Unknown'
+    )
+  }, [planSubscription])
 
   return (
     <Disclosure as="nav" className="bg-gray-800 text-gray-300">
@@ -48,6 +56,9 @@ export default function NavBar() {
             <div className="grow" />
             <div className="flex flex-col md:flex-row mt-3 md:mt-0 md:items-center">
               <div className="nav-caption">Button clicks left: {entitlements.subscriptionButtonClicks}</div>
+            </div>
+            <div className="flex flex-col md:flex-row mt-3 md:mt-0 md:items-center">
+              <div className="nav-caption">Subscription renewal at: {subscriptionRenewAt ?? 'Unknown'}</div>
             </div>
           </div>
           <div className="shrink-0">
