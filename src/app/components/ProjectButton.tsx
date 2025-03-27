@@ -28,8 +28,7 @@ function RenderProjectButton(projectType: string, projectName: string) {
     return <span className="ml-1">(No more clicks left)</span>
   }
 
-  const canGenerateButtonClick = () =>
-    entitlements.subscriptionButtonClicks > 0
+  const canGenerateButtonClick = () => entitlements.subscriptionButtonClicks > 0
 
   switch (projectType) {
     case 'Single':

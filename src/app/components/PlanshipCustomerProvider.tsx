@@ -41,7 +41,7 @@ export const CurrentPlanshipCustomerProvider = ({
       customerId: currentUser.email,
       getAccessToken
     },
-    initialEntitlements,
+    initialEntitlements
   )
 
   return <PlanshipCustomerProvider>{children}</PlanshipCustomerProvider>

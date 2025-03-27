@@ -12,14 +12,21 @@ interface IPlanshipSubscriptionContext {
 
 const PlanshipSubscriptionContext = createContext<IPlanshipSubscriptionContext>({})
 
-export const PlanshipSubscriptionProvider = ({ children, initialSubscriptions }: { children: React.ReactNode, initialSubscriptions: [] }) => {
+export const PlanshipSubscriptionProvider = ({
+  children,
+  initialSubscriptions
+}: {
+  children: React.ReactNode
+  initialSubscriptions: []
+}) => {
   const { planshipCustomerApiClient } = usePlanshipCustomer()
 
-  const  [subscriptions, setSubscriptions] = useState(() => initialSubscriptions)
+  const [subscriptions, setSubscriptions] = useState(() => initialSubscriptions)
   const [planSubscription, setDefaultSubscription] = useState(() => initialSubscriptions?.[0])
 
   const changePlan = async (newPlanSlug: string) => {
-    return planshipCustomerApiClient?.modifySubscription(subscriptions?.[0].subscriptionId, {
+    return planshipCustomerApiClient
+      ?.modifySubscription(subscriptions?.[0].subscriptionId, {
         planSlug: newPlanSlug,
         renewPlanSlug: newPlanSlug
       })
